@@ -761,7 +761,7 @@
             // Update best option display
             document.getElementById('bestIcon').textContent = best.icon;
             document.getElementById('bestMethod').textContent = best.name[currentLanguage];
-            document.getElementById('previewRate').textContent = `${currencySymbol}${best.totalCost.toFixed(2)}`;
+            document.getElementById('previewRate').textContent = `${currencySymbol}${best.totalCost.toLocaleString(undefined, { minimumFractionDigits: (currency === 'KRW' || currency === 'TWD') ? 0 : 2 })}`;
             
             const savings = worst.totalCost - best.totalCost;
             document.getElementById('savingsText').textContent = `${t.youSave} ${currencySymbol}${savings.toFixed(2)}`;
