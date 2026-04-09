@@ -626,21 +626,45 @@
                 icon: '💳',
                 fee: 0.03,  // 3% foreign transaction fee
                 rate_markup: 0.01,  // 1% worse rate
-                available: { en: 'Most stores', 'zh-cn': '大多数商店', ko: '대부분의 가게', th: 'ร้านค้าส่วนใหญ่', 'zh-tw': '大多數商店' }
+                available: { en: 'Most stores', 'zh-cn': '大多数商店', ko: '대부분의 가게', th: 'ร้านค้าส่วนใหญ่', 'zh-tw': '大多數商店' },
+                affiliateLink: '#', // TODO: Add credit card affiliate link
+                affiliateText: { 
+                    en: 'Get a travel-friendly credit card →', 
+                    'zh-cn': '申请旅行信用卡 →', 
+                    ko: '여행용 신용카드 신청 →', 
+                    th: 'สมัครบัตรเครดิตสำหรับการเดินทาง →', 
+                    'zh-tw': '申請旅行信用卡 →' 
+                }
             },
             cash: {
                 name: { en: "Cash Exchange", 'zh-cn': '现金兑换', ko: '현금 환전', th: 'แลกเงินสด', 'zh-tw': '現金兌換' },
                 icon: '💵',
                 fee: 0.01,  // 1% fee at good exchange shops
                 rate_markup: 0.03,  // 3% worse rate (typical spread)
-                available: { en: 'Exchange shops', 'zh-cn': '兑换店', ko: '환전소', th: 'ร้านแลกเงิน', 'zh-tw': '兌換店' }
+                available: { en: 'Exchange shops', 'zh-cn': '兑换店', ko: '환전소', th: 'ร้านแลกเงิน', 'zh-tw': '兌換店' },
+                affiliateLink: '#', // TODO: Add currency exchange affiliate link
+                affiliateText: { 
+                    en: 'Find best exchange shops →', 
+                    'zh-cn': '查找最佳兑换店 →', 
+                    ko: '최고의 환전소 찾기 →', 
+                    th: 'ค้นหาร้านแลกเงินที่ดีที่สุด →', 
+                    'zh-tw': '查找最佳兌換店 →' 
+                }
             },
             suica: {
                 name: { en: "Suica/IC Card", 'zh-cn': 'Suica/IC卡', ko: 'Suica/IC카드', th: 'Suica/IC Card', 'zh-tw': 'Suica/IC卡' },
                 icon: '🎫',
                 fee: 0.03,  // 3% fee (charged via credit card)
                 rate_markup: 0.015,  // 1.5% worse rate
-                available: { en: 'Trains, convenience stores', 'zh-cn': '火车、便利店', ko: '기차, 편의점', th: 'รถไฟ, ร้านสะดวกซื้อ', 'zh-tw': '火車、便利商店' }
+                available: { en: 'Trains, convenience stores', 'zh-cn': '火车、便利店', ko: '기차, 편의점', th: 'รถไฟ, ร้านสะดวกซื้อ', 'zh-tw': '火車、便利商店' },
+                affiliateLink: '#', // TODO: Add Suica/Pasmo guide link
+                affiliateText: { 
+                    en: 'How to get a Suica card →', 
+                    'zh-cn': '如何获得Suica卡 →', 
+                    ko: 'Suica 카드 받는 방법 →', 
+                    th: 'วิธีรับบัตร Suica →', 
+                    'zh-tw': '如何獲得Suica卡 →' 
+                }
             }
         };
 
@@ -746,6 +770,13 @@
             document.getElementById('detailFee').textContent = `${currencySymbol}${best.feeAmount.toFixed(2)} (${(best.fee * 100).toFixed(1)}%)`;
             document.getElementById('detailRate').textContent = `1 ${currency} = ¥${baseRate.toFixed(2)}`;
             document.getElementById('detailAvail').textContent = best.available[currentLanguage];
+            
+            // Update CTA button with affiliate link
+            const ctaButton = document.getElementById('bestCTA');
+            ctaButton.textContent = best.affiliateText[currentLanguage];
+            ctaButton.onclick = function() {
+                window.open(best.affiliateLink, '_blank');
+            };
 
             // Update other options
             let optionsHTML = '';
