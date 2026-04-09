@@ -608,16 +608,16 @@
             }
         };
 
-        // Exchange rates as of April 2026 (approximate)
+        // Exchange rates as of April 2026 (actual market rates)
         const exchangeRates = {
-            USD: 151,
-            CNY: 21,
-            KRW: 0.115,
-            THB: 4.2,
-            TWD: 4.75,
-            EUR: 165,
-            GBP: 192,
-            SGD: 112
+            USD: 160,
+            CNY: 23.17,
+            KRW: 0.106,
+            THB: 4.85,
+            TWD: 5.06,
+            EUR: 185,
+            GBP: 211,
+            SGD: 124
         };
 
         const paymentMethods = {
@@ -744,7 +744,7 @@
             document.getElementById('savingsDetail').textContent = `${t.vs} ${worst.name[currentLanguage]}`;
             
             document.getElementById('detailFee').textContent = `${currencySymbol}${best.feeAmount.toFixed(2)} (${(best.fee * 100).toFixed(1)}%)`;
-            document.getElementById('detailRate').textContent = `1 ${currency} = ¥${best.effectiveRate.toFixed(2)}`;
+            document.getElementById('detailRate').textContent = `1 ${currency} = ¥${baseRate.toFixed(2)}`;
             document.getElementById('detailAvail').textContent = best.available[currentLanguage];
 
             // Update other options
