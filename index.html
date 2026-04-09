@@ -394,7 +394,7 @@
                 <p class="subtitle" id="subtitle">Compare exchange rates and payment options</p>
 
                 <div class="form-group">
-                    <label id="amountLabel">Amount you need to pay</label>
+                    <label id="amountLabel">Amount in Japanese Yen (¥)</label>
                     <input type="number" id="amount" value="10000" placeholder="10000">
                 </div>
 
@@ -417,7 +417,6 @@
                     <div class="payment-types">
                         <button class="payment-btn active" onclick="setPayment('cash', this)" id="paymentCash">💵 Cash</button>
                         <button class="payment-btn" onclick="setPayment('card', this)" id="paymentCard">💳 Credit Card</button>
-                        <button class="payment-btn" onclick="setPayment('transfer', this)" id="paymentTransfer">🏦 Bank Transfer</button>
                         <button class="payment-btn" onclick="setPayment('suica', this)" id="paymentSuica">🎫 Suica/IC Card</button>
                     </div>
                 </div>
@@ -425,7 +424,7 @@
                 <button class="calculate-btn" onclick="calculatePayment()" id="calculateBtn">Compare Now →</button>
 
                 <div class="trust-signals" id="trustSignals">
-                    🔒 Your data is not stored | Exchange rates updated: Real-time
+                    🔒 Your data is not stored | Rates based on April 2026 estimates
                 </div>
             </div>
 
@@ -439,10 +438,10 @@
                         <div class="method-name" id="bestMethod">Cash Exchange</div>
                     </div>
 
-                    <div class="rate-display" id="previewRate">¥100,000</div>
+                    <div class="rate-display" id="previewRate">$66.23</div>
 
                     <div class="savings" id="savingsBox">
-                        <div id="savingsText">You save ¥5,000</div>
+                        <div id="savingsText">You save $5.00</div>
                         <div style="font-size: 11px;" id="savingsDetail">vs Credit Card</div>
                     </div>
 
@@ -473,11 +472,15 @@
                 <div class="trust-signals" id="dataPrivacy">
                     🔒 This calculator doesn't store any personal information
                 </div>
+                
+                <div class="trust-signals" id="feeDisclaimer" style="margin-top: 12px; background: #fff3cd; border-left-color: #ffaa00; color: #856404;">
+                    💡 Fees are approximate estimates based on typical market rates
+                </div>
             </div>
         </main>
 
         <footer>
-            <p>© 2024 PayJapan | <a href="#">Privacy</a> | <a href="#">Terms</a> | <a href="#">About</a></p>
+            <p>© 2024 TravelPayComparison | <a href="#">Privacy</a> | <a href="#">Terms</a> | <a href="#">About</a></p>
         </footer>
     </div>
 
@@ -486,12 +489,11 @@
             en: {
                 title: "Find Best Payment Method in Japan",
                 subtitle: "Compare exchange rates and payment options",
-                amountLabel: "Amount you need to pay (JPY)",
+                amountLabel: "Amount in Japanese Yen (¥)",
                 currencyLabel: "Your home currency",
                 paymentLabel: "How will you pay?",
                 paymentCash: "💵 Cash",
                 paymentCard: "💳 Credit Card",
-                paymentTransfer: "🏦 Bank Transfer",
                 paymentSuica: "🎫 Suica/IC Card",
                 calculateBtn: "Compare Now →",
                 bestLabel: "🏆 BEST OPTION",
@@ -502,17 +504,20 @@
                 affiliateNote: "We recommend services that offer the best value. Some links may earn us commission.",
                 otherOptionsLabel: "Other Payment Methods",
                 dataPrivacy: "🔒 This calculator doesn't store any personal information",
-                trustSignals: "🔒 Your data is not stored | Exchange rates updated: Real-time"
+                trustSignals: "🔒 Your data is not stored | Rates based on April 2026 estimates",
+                feeDisclaimer: "💡 Fees are approximate estimates based on typical market rates",
+                youPay: "You pay",
+                youSave: "You save",
+                vs: "vs"
             },
             'zh-cn': {
                 title: "在日本找到最佳支付方式",
                 subtitle: "比较汇率和支付选项",
-                amountLabel: "您需要支付的金额（日元）",
+                amountLabel: "日元金额（¥）",
                 currencyLabel: "您的本国货币",
                 paymentLabel: "您将如何支付？",
                 paymentCash: "💵 现金",
                 paymentCard: "💳 信用卡",
-                paymentTransfer: "🏦 银行转账",
                 paymentSuica: "🎫 Suica/IC卡",
                 calculateBtn: "立即比较 →",
                 bestLabel: "🏆 最佳选项",
@@ -523,17 +528,20 @@
                 affiliateNote: "我们推荐能提供最佳价值的服务。某些链接可能会使我们获得佣金。",
                 otherOptionsLabel: "其他支付方式",
                 dataPrivacy: "🔒 此计算器不存储任何个人信息",
-                trustSignals: "🔒 您的数据不被存储 | 汇率实时更新"
+                trustSignals: "🔒 您的数据不被存储 | 汇率基于2026年4月估算",
+                feeDisclaimer: "💡 手续费基于2026年4月一般市场费率的概算值",
+                youPay: "您需支付",
+                youSave: "您节省",
+                vs: "相比"
             },
             ko: {
                 title: "일본에서 최고의 결제 방법 찾기",
                 subtitle: "환율 및 결제 옵션 비교",
-                amountLabel: "필요한 결제 금액 (JPY)",
+                amountLabel: "일본 엔화 금액 (¥)",
                 currencyLabel: "귀국의 통화",
                 paymentLabel: "어떻게 결제하시겠습니까?",
                 paymentCash: "💵 현금",
                 paymentCard: "💳 신용카드",
-                paymentTransfer: "🏦 은행 송금",
                 paymentSuica: "🎫 Suica/IC카드",
                 calculateBtn: "지금 비교 →",
                 bestLabel: "🏆 최고의 옵션",
@@ -544,17 +552,20 @@
                 affiliateNote: "최고의 가치를 제공하는 서비스를 추천합니다. 일부 링크는 수수료를 얻을 수 있습니다.",
                 otherOptionsLabel: "다른 결제 방법",
                 dataPrivacy: "🔒 이 계산기는 개인정보를 저장하지 않습니다",
-                trustSignals: "🔒 데이터가 저장되지 않습니다 | 환율 실시간 업데이트"
+                trustSignals: "🔒 데이터가 저장되지 않습니다 | 환율은 2026년 4월 기준 추정",
+                feeDisclaimer: "💡 수수료는 2026년 4월 일반 시장 요율 기준 개략적 추정치입니다",
+                youPay: "지불 금액",
+                youSave: "절약 금액",
+                vs: "대비"
             },
             th: {
                 title: "หาวิธีการชำระเงินที่ดีที่สุดในญี่ปุ่น",
                 subtitle: "เปรียบเทียบอัตราแลกเปลี่ยนและตัวเลือกการชำระเงิน",
-                amountLabel: "จำนวนเงินที่ต้องชำระ (JPY)",
+                amountLabel: "จำนวนเงินเยนญี่ปุ่น (¥)",
                 currencyLabel: "สกุลเงินของประเทศของคุณ",
                 paymentLabel: "คุณจะชำระเงินอย่างไร?",
                 paymentCash: "💵 เงินสด",
                 paymentCard: "💳 บัตรเครดิต",
-                paymentTransfer: "🏦 โอนธนาคาร",
                 paymentSuica: "🎫 Suica/IC Card",
                 calculateBtn: "เปรียบเทียบตอนนี้ →",
                 bestLabel: "🏆 ตัวเลือกที่ดีที่สุด",
@@ -565,17 +576,20 @@
                 affiliateNote: "เราแนะนำบริการที่มีค่าดีที่สุด ลิงก์บางลิงก์อาจได้รับค่าคอมมิชชั่นจากเรา",
                 otherOptionsLabel: "วิธีการชำระเงินอื่นๆ",
                 dataPrivacy: "🔒 เครื่องคิดเลขนี้ไม่เก็บข้อมูลส่วนบุคคลใดๆ",
-                trustSignals: "🔒 ข้อมูลของคุณไม่ได้ถูกเก็บไว้ | อัตราแลกเปลี่ยนอัปเดตแบบเรียลไทม์"
+                trustSignals: "🔒 ข้อมูลของคุณไม่ได้ถูกเก็บไว้ | อัตราอิงจากเดือนเมษายน 2026",
+                feeDisclaimer: "💡 ค่าธรรมเนียมเป็นค่าประมาณจากอัตราตลาดทั่วไปในเดือนเมษายน 2026",
+                youPay: "คุณจ่าย",
+                youSave: "คุณประหยัด",
+                vs: "เทียบกับ"
             },
             'zh-tw': {
                 title: "在日本找到最佳付款方式",
                 subtitle: "比較匯率和付款選項",
-                amountLabel: "您需要支付的金額（日元）",
+                amountLabel: "日圓金額 (¥)",
                 currencyLabel: "您的本國貨幣",
                 paymentLabel: "您將如何付款？",
                 paymentCash: "💵 現金",
                 paymentCard: "💳 信用卡",
-                paymentTransfer: "🏦 銀行轉帳",
                 paymentSuica: "🎫 Suica/IC卡",
                 calculateBtn: "立即比較 →",
                 bestLabel: "🏆 最佳選項",
@@ -586,10 +600,15 @@
                 affiliateNote: "我們推薦能提供最佳價值的服務。某些鏈接可能會讓我們獲得佣金。",
                 otherOptionsLabel: "其他付款方式",
                 dataPrivacy: "🔒 此計算器不儲存任何個人信息",
-                trustSignals: "🔒 您的數據未被儲存 | 匯率即時更新"
+                trustSignals: "🔒 您的數據未被儲存 | 匯率基於2026年4月估算",
+                feeDisclaimer: "💡 手續費基於2026年4月一般市場費率的概算值",
+                youPay: "您需支付",
+                youSave: "您節省",
+                vs: "相比"
             }
         };
 
+        // Exchange rates as of April 2026 (approximate)
         const exchangeRates = {
             USD: 151,
             CNY: 21,
@@ -602,42 +621,50 @@
         };
 
         const paymentMethods = {
-            cash: {
-                name: { en: "Cash Exchange", 'zh-cn': '现金兑换', ko: '현금 환전', th: 'แลกเงินสด', 'zh-tw': '現金兌換' },
-                icon: '💵',
-                fee: 0,
-                rate_multiplier: 0.98,
-                available: { en: 'Most exchange shops', 'zh-cn': '大多数兑换店', ko: '대부분의 환전소', th: 'ร้านแลกเงินส่วนใหญ่', 'zh-tw': '大多數兌換店' }
-            },
             card: {
                 name: { en: "Credit Card", 'zh-cn': '信用卡', ko: '신용카드', th: 'บัตรเครดิต', 'zh-tw': '信用卡' },
                 icon: '💳',
-                fee: 0.03,
-                rate_multiplier: 1.0,
+                fee: 0.03,  // 3% foreign transaction fee
+                rate_markup: 0.01,  // 1% worse rate
                 available: { en: 'Most stores', 'zh-cn': '大多数商店', ko: '대부분의 가게', th: 'ร้านค้าส่วนใหญ่', 'zh-tw': '大多數商店' }
             },
-            transfer: {
-                name: { en: "Bank Transfer", 'zh-cn': '银行转账', ko: '은행 송금', th: 'โอนธนาคาร', 'zh-tw': '銀行轉帳' },
-                icon: '🏦',
-                fee: 0.05,
-                rate_multiplier: 1.01,
-                available: { en: 'Pre-arranged', 'zh-cn': '需要预先安排', ko: '사전 준비 필요', th: 'ต้องเตรียมไว้ก่อน', 'zh-tw': '需要預先安排' }
+            cash: {
+                name: { en: "Cash Exchange", 'zh-cn': '现金兑换', ko: '현금 환전', th: 'แลกเงินสด', 'zh-tw': '現金兌換' },
+                icon: '💵',
+                fee: 0.01,  // 1% fee at good exchange shops
+                rate_markup: 0.03,  // 3% worse rate (typical spread)
+                available: { en: 'Exchange shops', 'zh-cn': '兑换店', ko: '환전소', th: 'ร้านแลกเงิน', 'zh-tw': '兌換店' }
             },
             suica: {
                 name: { en: "Suica/IC Card", 'zh-cn': 'Suica/IC卡', ko: 'Suica/IC카드', th: 'Suica/IC Card', 'zh-tw': 'Suica/IC卡' },
                 icon: '🎫',
-                fee: 0.02,
-                rate_multiplier: 1.0,
-                available: { en: 'Trains, stores', 'zh-cn': '火车、商店', ko: '기차, 가게', th: 'รถไฟ, ร้านค้า', 'zh-tw': '火車、商店' }
+                fee: 0.03,  // 3% fee (charged via credit card)
+                rate_markup: 0.015,  // 1.5% worse rate
+                available: { en: 'Trains, convenience stores', 'zh-cn': '火车、便利店', ko: '기차, 편의점', th: 'รถไฟ, ร้านสะดวกซื้อ', 'zh-tw': '火車、便利商店' }
             }
         };
 
         let currentLanguage = 'en';
         let selectedPayment = 'cash';
 
+        function getCurrencySymbol(currency) {
+            const symbols = {
+                USD: '$',
+                CNY: '¥',
+                KRW: '₩',
+                THB: '฿',
+                TWD: 'NT$',
+                EUR: '€',
+                GBP: '£',
+                SGD: 'S$'
+            };
+            return symbols[currency] || currency;
+        }
+
         function setLanguage(lang) {
             currentLanguage = lang;
             updateLanguage();
+            calculatePayment(); // Recalculate to update displayed text
             
             document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
@@ -651,10 +678,9 @@
             document.getElementById('amountLabel').textContent = t.amountLabel;
             document.getElementById('currencyLabel').textContent = t.currencyLabel;
             document.getElementById('paymentLabel').textContent = t.paymentLabel;
-            document.getElementById('paymentCash').textContent = t.paymentCash;
-            document.getElementById('paymentCard').textContent = t.paymentCard;
-            document.getElementById('paymentTransfer').textContent = t.paymentTransfer;
-            document.getElementById('paymentSuica').textContent = t.paymentSuica;
+            document.getElementById('paymentCash').innerHTML = t.paymentCash;
+            document.getElementById('paymentCard').innerHTML = t.paymentCard;
+            document.getElementById('paymentSuica').innerHTML = t.paymentSuica;
             document.getElementById('calculateBtn').textContent = t.calculateBtn;
             document.getElementById('bestLabel').textContent = t.bestLabel;
             document.getElementById('detailFeeLabel').textContent = t.detailFeeLabel;
@@ -665,6 +691,7 @@
             document.getElementById('otherOptionsLabel').textContent = t.otherOptionsLabel;
             document.getElementById('dataPrivacy').textContent = t.dataPrivacy;
             document.getElementById('trustSignals').textContent = t.trustSignals;
+            document.getElementById('feeDisclaimer').textContent = t.feeDisclaimer;
         }
 
         function setPayment(type, element) {
@@ -674,45 +701,57 @@
         }
 
         function calculatePayment() {
-            const amount = parseFloat(document.getElementById('amount').value) || 10000;
+            const jpyAmount = parseFloat(document.getElementById('amount').value) || 10000;
             const currency = document.getElementById('currency').value;
-            const rate = exchangeRates[currency] || 151;
+            const baseRate = exchangeRates[currency] || 151;
+            const currencySymbol = getCurrencySymbol(currency);
+            const t = translations[currentLanguage];
 
             const results = [];
+            
             for (const [key, method] of Object.entries(paymentMethods)) {
-                // amount is in JPY, convert to foreign currency then calculate received
-                const amountInForeignCurrency = amount / rate;
-                const received = amountInForeignCurrency * rate * method.rate_multiplier;
-                const fee = received * method.fee;
-                const total = received - fee;
-
+                // Calculate effective exchange rate (worse than base rate)
+                const effectiveRate = baseRate * (1 - method.rate_markup);
+                
+                // Convert JPY to foreign currency
+                const foreignCurrencyBase = jpyAmount / effectiveRate;
+                
+                // Add fee
+                const totalCost = foreignCurrencyBase * (1 + method.fee);
+                
                 results.push({
                     key,
                     ...method,
-                    received,
-                    fee,
-                    total,
-                    rate: rate * method.rate_multiplier
+                    totalCost,
+                    effectiveRate,
+                    feeAmount: foreignCurrencyBase * method.fee
                 });
             }
 
-            results.sort((a, b) => b.received - a.received);
+            // Sort by total cost (ascending - cheapest first)
+            results.sort((a, b) => a.totalCost - b.totalCost);
 
             const best = results[0];
-            const t = translations[currentLanguage];
+            const worst = results[results.length - 1];
 
+            // Update best option display
             document.getElementById('bestIcon').textContent = best.icon;
             document.getElementById('bestMethod').textContent = best.name[currentLanguage];
-            document.getElementById('previewRate').textContent = `¥${(best.received / 1000).toFixed(0)}k`;
-            document.getElementById('savingsText').textContent = `You save ¥${((results[results.length-1].received - best.received) / 1000).toFixed(0)}k`;
-            document.getElementById('savingsDetail').textContent = `vs ${results[results.length-1].name[currentLanguage]}`;
-            document.getElementById('detailFee').textContent = `${(best.fee / 1000).toFixed(0)}k JPY`;
-            document.getElementById('detailRate').textContent = `1 ${currency} = ¥${best.rate.toFixed(0)}`;
+            document.getElementById('previewRate').textContent = `${currencySymbol}${best.totalCost.toFixed(2)}`;
+            
+            const savings = worst.totalCost - best.totalCost;
+            document.getElementById('savingsText').textContent = `${t.youSave} ${currencySymbol}${savings.toFixed(2)}`;
+            document.getElementById('savingsDetail').textContent = `${t.vs} ${worst.name[currentLanguage]}`;
+            
+            document.getElementById('detailFee').textContent = `${currencySymbol}${best.feeAmount.toFixed(2)} (${(best.fee * 100).toFixed(1)}%)`;
+            document.getElementById('detailRate').textContent = `1 ${currency} = ¥${best.effectiveRate.toFixed(2)}`;
             document.getElementById('detailAvail').textContent = best.available[currentLanguage];
 
+            // Update other options
             let optionsHTML = '';
             for (let i = 1; i < results.length; i++) {
                 const res = results[i];
+                const extraCost = res.totalCost - best.totalCost;
                 optionsHTML += `
                     <div class="option-card fade-in">
                         <div class="option-header">
@@ -720,10 +759,10 @@
                                 <span style="font-size: 20px; margin-right: 8px;">${res.icon}</span>
                                 <span class="option-name">${res.name[currentLanguage]}</span>
                             </div>
-                            <div class="option-rate">¥${(res.received / 1000).toFixed(0)}k</div>
+                            <div class="option-rate">${currencySymbol}${res.totalCost.toFixed(2)}</div>
                         </div>
                         <div class="option-details">
-                            Fee: ${(res.fee / 1000).toFixed(0)}k JPY | Available: ${res.available[currentLanguage]}
+                            ${t.detailFeeLabel}: ${currencySymbol}${res.feeAmount.toFixed(2)} | +${currencySymbol}${extraCost.toFixed(2)} ${t.vs.toLowerCase()} best
                         </div>
                     </div>
                 `;
