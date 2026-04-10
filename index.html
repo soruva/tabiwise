@@ -436,12 +436,12 @@
 
                 <div class="form-group">
                     <label id="amountLabel">Amount in Japanese Yen (¥)</label>
-                    <input type="number" id="amount" value="10000" placeholder="10000">
+                    <input type="number" id="amount" value="10000" placeholder="10000" oninput="calculatePayment()">
                 </div>
 
                 <div class="form-group">
                     <label id="currencyLabel">Your home currency</label>
-                    <select id="currency">
+                    <select id="currency" onchange="calculatePayment()">
                         <option value="USD">USD - US Dollar</option>
                         <option value="CNY">CNY - Chinese Yuan</option>
                         <option value="KRW">KRW - Korean Won</option>
