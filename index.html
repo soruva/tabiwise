@@ -314,21 +314,24 @@
             border: 2px solid var(--border);
             border-radius: 12px;
             padding: 20px;
-            margin-bottom: 16px;
+            margin-bottom: 15px;
             transition: all 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .option-card:hover {
             border-color: var(--primary);
+            transform: scale(1.01);
             box-shadow: 0 8px 24px rgba(0, 102, 204, 0.15);
-            transform: translateY(-2px);
         }
 
         .option-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 12px;
+            width: 100%;
         }
 
         .option-name {
@@ -351,6 +354,7 @@
             color: #666;
             margin-top: 8px;
             font-weight: 500;
+            width: 100%;
         }
 
         .trust-signals {
@@ -471,7 +475,7 @@
 
             <!-- Results Section -->
             <div class="section">
-                <div class="results-preview">
+                <div class="results-preview" id="results-preview">
                     <div class="best-label" id="bestLabel">🏆 BEST OPTION</div>
                     
                     <div class="payment-method">
@@ -865,15 +869,17 @@
 
                 optionsHTML += `
                     <div class="option-card fade-in">
-                        <div class="option-header">
-                            <div class="option-name">
-                                <span style="font-size: 24px;">${res.icon}</span>
-                                <span>${res.name[currentLanguage]}</span>
+                        <div style="width: 100%;">
+                            <div class="option-header">
+                                <div class="option-name">
+                                    <span style="font-size: 24px;">${res.icon}</span>
+                                    <span>${res.name[currentLanguage]}</span>
+                                </div>
+                                <div class="option-rate">${currencySymbol}${resCostFormatted}</div>
                             </div>
-                            <div class="option-rate">${currencySymbol}${resCostFormatted}</div>
-                        </div>
-                        <div class="option-details">
-                            ${t.detailFeeLabel}: ${currencySymbol}${res.feeAmount.toFixed(2)} | +${currencySymbol}${extraCost} ${t.thanBest}
+                            <div class="option-details">
+                                ${t.detailFeeLabel}: ${currencySymbol}${res.feeAmount.toFixed(2)} | +${currencySymbol}${extraCost} ${t.thanBest}
+                            </div>
                         </div>
                     </div>
                 `;
@@ -885,7 +891,7 @@
             calculatePayment();
             
             // Only scroll when button is clicked
-            const resultsPreview = document.querySelector('.results-preview');
+            const resultsPreview = document.getElementById('results-preview');
             if (resultsPreview) {
                 resultsPreview.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             }
