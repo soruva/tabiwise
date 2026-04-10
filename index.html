@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TravelPayComparison - Payment Methods for Tourists in Japan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -21,23 +24,29 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            padding: 20px;
+            padding: 0;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 100%;
             margin: 0 auto;
         }
 
         header {
             background: white;
-            border-radius: 12px;
             padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -46,16 +55,13 @@
         }
 
         .logo {
-            font-size: 26px;
+            font-size: 28px;
             font-weight: 900;
             background: linear-gradient(135deg, #667eea 0%, #00cc66 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             letter-spacing: -0.5px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
         }
 
         .lang-selector {
@@ -65,10 +71,10 @@
         }
 
         .lang-btn {
-            padding: 10px 15px;
+            padding: 8px 16px;
             border: 2px solid var(--border);
             background: white;
-            border-radius: 6px;
+            border-radius: 8px;
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s;
@@ -78,6 +84,7 @@
         .lang-btn:hover {
             border-color: var(--primary);
             color: var(--primary);
+            transform: translateY(-1px);
         }
 
         .lang-btn.active {
@@ -87,169 +94,175 @@
         }
 
         main {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-
-        @media (max-width: 968px) {
-            main {
-                grid-template-columns: 1fr;
-            }
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
         }
 
         .section {
             background: white;
-            border-radius: 12px;
-            padding: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
         }
 
         h1 {
-            font-size: 28px;
+            font-size: 36px;
+            font-weight: 900;
             color: var(--primary);
             margin-bottom: 10px;
+            text-align: center;
+            letter-spacing: -1px;
         }
 
         .subtitle {
             color: #666;
-            margin-bottom: 25px;
-            font-size: 14px;
+            margin-bottom: 40px;
+            font-size: 16px;
+            text-align: center;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         label {
             display: block;
-            font-weight: 600;
+            font-weight: 700;
             color: #333;
-            margin-bottom: 8px;
-            font-size: 14px;
+            margin-bottom: 10px;
+            font-size: 15px;
         }
 
         input, select {
             width: 100%;
-            padding: 12px;
+            padding: 16px;
             border: 2px solid var(--border);
-            border-radius: 6px;
+            border-radius: 12px;
             font-size: 16px;
             transition: all 0.3s;
             font-family: inherit;
+            font-weight: 500;
         }
 
         input:focus, select:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
-        }
-
-        .row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
+            box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.1);
         }
 
         .payment-types {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
         }
 
         .payment-btn {
-            padding: 12px;
+            padding: 16px;
             border: 2px solid var(--border);
             background: white;
-            border-radius: 6px;
+            border-radius: 12px;
             cursor: pointer;
-            font-weight: 600;
-            font-size: 13px;
+            font-weight: 700;
+            font-size: 14px;
             transition: all 0.3s;
             text-align: center;
         }
 
         .payment-btn:hover {
             border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
         .payment-btn.active {
             background: var(--primary);
             color: white;
             border-color: var(--primary);
+            box-shadow: 0 4px 16px rgba(0, 102, 204, 0.3);
         }
 
         .calculate-btn {
             width: 100%;
-            padding: 14px;
+            padding: 18px;
             background: linear-gradient(135deg, var(--primary) 0%, #0047a3 100%);
             color: white;
             border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            font-weight: bold;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 800;
             cursor: pointer;
             transition: all 0.3s;
-            margin-top: 20px;
+            margin-top: 30px;
+            box-shadow: 0 4px 16px rgba(0, 102, 204, 0.3);
         }
 
         .calculate-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(0, 102, 204, 0.3);
+            box-shadow: 0 8px 24px rgba(0, 102, 204, 0.4);
         }
 
         .results-preview {
             background: linear-gradient(135deg, var(--accent) 0%, #00b84d 100%);
             color: white;
-            padding: 25px;
-            border-radius: 8px;
-            margin-bottom: 20px;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
         }
 
         .best-label {
-            font-size: 13px;
+            font-size: 14px;
             opacity: 0.9;
-            margin-bottom: 15px;
-            font-weight: 600;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .payment-method {
             display: flex;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 15px;
-            font-size: 20px;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .method-icon {
+            font-size: 48px;
         }
 
         .method-name {
-            font-size: 22px;
-            font-weight: bold;
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: -0.5px;
         }
 
         .rate-display {
-            font-size: 32px;
-            font-weight: 800;
-            margin: 15px 0;
+            font-size: 48px;
+            font-weight: 900;
+            margin: 20px 0;
             line-height: 1;
+            letter-spacing: -2px;
         }
 
         .savings {
             background: white;
             color: var(--accent);
-            padding: 12px;
-            border-radius: 6px;
-            font-weight: 700;
-            margin: 15px 0;
+            padding: 16px;
+            border-radius: 12px;
+            font-weight: 800;
+            margin: 20px 0;
             text-align: center;
+            font-size: 18px;
         }
 
         .detail-item {
             display: flex;
             justify-content: space-between;
-            padding: 10px 0;
-            border-top: 1px solid rgba(255,255,255,0.2);
-            font-size: 14px;
+            padding: 14px 0;
+            border-top: 1px solid rgba(255,255,255,0.3);
+            font-size: 15px;
+            font-weight: 600;
         }
 
         .detail-item:first-child {
@@ -258,98 +271,106 @@
 
         .cta-button {
             width: 100%;
-            padding: 12px;
+            padding: 16px;
             background: white;
             color: var(--accent);
             border: none;
-            border-radius: 6px;
-            font-weight: 700;
+            border-radius: 12px;
+            font-weight: 800;
             cursor: pointer;
-            margin-top: 15px;
+            margin-top: 20px;
             transition: all 0.3s;
-            font-size: 15px;
+            font-size: 16px;
         }
 
         .cta-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
 
         .affiliate-note {
-            font-size: 11px;
-            opacity: 0.8;
-            margin-top: 12px;
-            padding-top: 12px;
-            border-top: 1px solid rgba(255,255,255,0.2);
+            font-size: 12px;
+            opacity: 0.85;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.3);
+            line-height: 1.6;
         }
 
         .other-options {
-            margin-top: 20px;
+            margin-top: 30px;
         }
 
         .other-options h3 {
             color: #333;
-            font-size: 16px;
-            margin-bottom: 15px;
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-align: center;
         }
 
         .option-card {
             background: white;
             border: 2px solid var(--border);
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 12px;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
             transition: all 0.3s;
         }
 
         .option-card:hover {
             border-color: var(--primary);
-            box-shadow: 0 4px 12px rgba(0, 102, 204, 0.1);
+            box-shadow: 0 8px 24px rgba(0, 102, 204, 0.15);
+            transform: translateY(-2px);
         }
 
         .option-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .option-name {
-            font-weight: 700;
-            font-size: 16px;
+            font-weight: 800;
+            font-size: 18px;
             color: #333;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
         .option-rate {
-            font-size: 18px;
+            font-size: 24px;
             color: var(--accent);
-            font-weight: 800;
+            font-weight: 900;
         }
 
         .option-details {
-            font-size: 13px;
+            font-size: 14px;
             color: #666;
-            margin: 8px 0;
+            margin-top: 8px;
+            font-weight: 500;
         }
 
         .trust-signals {
             background: #e8f4f8;
             border-left: 4px solid var(--primary);
-            padding: 15px;
-            border-radius: 6px;
+            padding: 16px;
+            border-radius: 8px;
             font-size: 13px;
             color: #0066cc;
             margin-top: 20px;
+            font-weight: 600;
         }
 
         footer {
             background: white;
-            padding: 20px;
-            border-radius: 12px;
+            padding: 30px 20px;
             text-align: center;
-            font-size: 13px;
+            font-size: 14px;
             color: #666;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-top: 60px;
         }
 
         footer a {
@@ -358,22 +379,36 @@
             font-weight: 600;
         }
 
-        .hidden {
-            display: none;
-        }
-
         .fade-in {
-            animation: fadeIn 0.3s ease-in;
+            animation: fadeIn 0.4s ease-in;
         }
 
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(10px);
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
                 transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 28px;
+            }
+            
+            .section {
+                padding: 24px;
+            }
+
+            .rate-display {
+                font-size: 36px;
+            }
+
+            .payment-types {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -381,18 +416,20 @@
 <body>
     <div class="container">
         <header>
-            <div class="logo">🌏 TravelPayComparison</div>
-            <div class="lang-selector">
-                <button class="lang-btn active" onclick="setLanguage('en')">English</button>
-                <button class="lang-btn" onclick="setLanguage('zh-cn')">简体中文</button>
-                <button class="lang-btn" onclick="setLanguage('ko')">한국어</button>
-                <button class="lang-btn" onclick="setLanguage('th')">ไทย</button>
-                <button class="lang-btn" onclick="setLanguage('zh-tw')">繁體中文</button>
+            <div class="header-content">
+                <div class="logo">💳 TravelPayComparison</div>
+                <div class="lang-selector">
+                    <button class="lang-btn active" onclick="setLanguage('en')">English</button>
+                    <button class="lang-btn" onclick="setLanguage('zh-cn')">简体中文</button>
+                    <button class="lang-btn" onclick="setLanguage('ko')">한국어</button>
+                    <button class="lang-btn" onclick="setLanguage('th')">ไทย</button>
+                    <button class="lang-btn" onclick="setLanguage('zh-tw')">繁體中文</button>
+                </div>
             </div>
         </header>
 
         <main>
-            <!-- Left: Input Form -->
+            <!-- Input Form Section -->
             <div class="section">
                 <h1 id="title">Find Best Payment Method in Japan</h1>
                 <p class="subtitle" id="subtitle">Compare exchange rates and payment options</p>
@@ -432,48 +469,49 @@
                 </div>
             </div>
 
-            <!-- Right: Results Preview -->
+            <!-- Results Section -->
             <div class="section">
                 <div class="results-preview">
                     <div class="best-label" id="bestLabel">🏆 BEST OPTION</div>
                     
                     <div class="payment-method">
-                        <span id="bestIcon">💵</span>
+                        <span class="method-icon" id="bestIcon">💵</span>
                         <div class="method-name" id="bestMethod">Cash Exchange</div>
                     </div>
 
-                    <div class="rate-display" id="previewRate">$66.23</div>
+                    <div class="rate-display" id="previewRate">$65.03</div>
 
                     <div class="savings" id="savingsBox">
-                        <div id="savingsText">You save $5.00</div>
-                        <div style="font-size: 11px;" id="savingsDetail">vs Credit Card</div>
+                        <div id="savingsText">You save $0.33</div>
+                        <div style="font-size: 14px; margin-top: 4px; opacity: 0.9;" id="savingsDetail">vs Suica/IC Card</div>
                     </div>
 
                     <div class="detail-item">
                         <span id="detailFeeLabel">Fee</span>
-                        <span id="detailFee">0%</span>
+                        <span id="detailFee">$1.89 (3.0%)</span>
                     </div>
                     <div class="detail-item">
                         <span id="detailRateLabel">Exchange Rate</span>
-                        <span id="detailRate">1 USD = ¥151</span>
+                        <span id="detailRate">1 USD = ¥160.00</span>
                     </div>
                     <div class="detail-item">
                         <span id="detailAvailLabel">Available</span>
-                        <span id="detailAvail">Everywhere</span>
+                        <span id="detailAvail">Most stores</span>
                     </div>
 
-                    <button class="cta-button" id="bestCTA">Get Details →</button>
+                    <button class="cta-button" id="bestCTA">Get Revolut Card (No FX fees) →</button>
+                    
                     <div class="affiliate-note" id="affiliateNote">
                         <div style="margin-bottom: 8px;">
                             <strong>Disclaimer:</strong> Estimates for informational purposes only. Actual rates depend on your bank.
                         </div>
 
                         <!-- Pro Tip Box -->
-                        <div style="color: #fff; background: rgba(0,0,0,0.1); padding: 8px; border-radius: 4px; margin-bottom: 12px;">
+                        <div style="color: #fff; background: rgba(0,0,0,0.1); padding: 10px; border-radius: 6px; margin: 12px 0;">
                             <strong>💡 Pro Tip:</strong> Always choose <strong>"Pay in JPY"</strong> at terminals to avoid high conversion fees.
                         </div>
 
-                        <!-- PayPay QR Apps Box - Redesigned -->
+                        <!-- PayPay QR Apps Box -->
                         <div style="background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%); padding: 12px; border-radius: 8px; margin-bottom: 12px; border: 1px solid rgba(255,255,255,0.2);">
                             <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
                                 <span style="font-size: 20px;">📱</span>
@@ -495,7 +533,7 @@
                             </div>
                         </div>
 
-                        <p style="font-size: 0.9em; opacity: 0.8;">
+                        <p style="font-size: 11px; opacity: 0.8;">
                             *We recommend services that offer the best value. Some links may earn us commission.
                         </p>
                     </div>
@@ -650,7 +688,6 @@
             }
         };
 
-        // Exchange rates as of April 2026 (actual market rates)
         const exchangeRates = {
             USD: 160,
             CNY: 23.17,
@@ -666,8 +703,8 @@
             card: {
                 name: { en: "Credit Card", 'zh-cn': '信用卡', ko: '신용카드', th: 'บัตรเครดิต', 'zh-tw': '信用卡' },
                 icon: '💳',
-                fee: 0.03,  // 3% foreign transaction fee
-                rate_markup: 0.01,  // 1% worse rate
+                fee: 0.03,
+                rate_markup: 0.01,
                 available: { en: 'Most stores', 'zh-cn': '大多数商店', ko: '대부분의 가게', th: 'ร้านค้าส่วนใหญ่', 'zh-tw': '大多數商店' },
                 affiliateLink: 'https://www.revolut.com',
                 affiliateText: { 
@@ -681,8 +718,8 @@
             cash: {
                 name: { en: "Cash Exchange", 'zh-cn': '现金兑换', ko: '현금 환전', th: 'แลกเงินสด', 'zh-tw': '現金兌換' },
                 icon: '💵',
-                fee: 0.01,  // 1% fee at good exchange shops
-                rate_markup: 0.03,  // 3% worse rate (typical spread)
+                fee: 0.01,
+                rate_markup: 0.03,
                 available: { en: 'Exchange shops', 'zh-cn': '兑换店', ko: '환전소', th: 'ร้านแลกเงิน', 'zh-tw': '兌換店' },
                 affiliateLink: 'https://wise.com',
                 affiliateText: { 
@@ -696,8 +733,8 @@
             suica: {
                 name: { en: "Suica/IC Card", 'zh-cn': 'Suica/IC卡', ko: 'Suica/IC카드', th: 'Suica/IC Card', 'zh-tw': 'Suica/IC卡' },
                 icon: '🎫',
-                fee: 0.03,  // 3% fee (charged via credit card)
-                rate_markup: 0.015,  // 1.5% worse rate
+                fee: 0.03,
+                rate_markup: 0.015,
                 available: { en: 'Trains, convenience stores', 'zh-cn': '火车、便利店', ko: '기차, 편의점', th: 'รถไฟ, ร้านสะดวกซื้อ', 'zh-tw': '火車、便利商店' },
                 affiliateLink: 'https://www.klook.com/activity/suica-card-japan/',
                 affiliateText: { 
@@ -829,9 +866,9 @@
                 optionsHTML += `
                     <div class="option-card fade-in">
                         <div class="option-header">
-                            <div>
-                                <span style="font-size: 20px; margin-right: 8px;">${res.icon}</span>
-                                <span class="option-name">${res.name[currentLanguage]}</span>
+                            <div class="option-name">
+                                <span style="font-size: 24px;">${res.icon}</span>
+                                <span>${res.name[currentLanguage]}</span>
                             </div>
                             <div class="option-rate">${currencySymbol}${resCostFormatted}</div>
                         </div>
@@ -843,14 +880,12 @@
             }
             otherContainer.innerHTML = optionsHTML;
             
-            // Smooth scroll to results
             const resultsPreview = document.querySelector('.results-preview');
             if (resultsPreview) {
                 resultsPreview.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             }
         }
 
-        // Initialize
         calculatePayment();
     </script>
 </body>
