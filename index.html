@@ -50,8 +50,29 @@
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: linear-gradient(180deg, #e0ebff 0%, #fde1f0 50%, #ebe0ff 100%);
+            background-attachment: fixed;
             min-height: 100vh;
             color: #1a1a1a;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
         }
 
         header {
@@ -116,7 +137,7 @@
         }
 
         .hero h1 {
-            font-size: 56px;
+            font-size: 64px;
             font-weight: 800;
             line-height: 1.1;
             margin-bottom: 24px;
@@ -155,9 +176,16 @@
             background: white;
             border-radius: 24px;
             padding: 48px;
-            margin-bottom: 40px;
+            margin-bottom: 56px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.08);
             border: 1px solid #e5e7eb;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 30px 80px rgba(102, 126, 234, 0.15);
+            border-color: rgba(102, 126, 234, 0.3);
         }
 
         h2 {
@@ -165,6 +193,20 @@
             font-weight: 800;
             margin-bottom: 32px;
             color: #1a1a1a;
+            position: relative;
+            padding-bottom: 16px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
         }
 
         h2 .highlight {
@@ -593,7 +635,19 @@
         .option-amount {
             font-size: 24px;
             font-weight: 800;
-            color: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .option-rate {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .option-details {
@@ -657,6 +711,17 @@
             line-height: 1.6;
         }
 
+        .trust-signals {
+            background: #f3f4f6;
+            border-left: 4px solid #6b7280;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 12px;
+            color: #4b5563;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+
         footer {
             background: white;
             padding: 40px 24px;
@@ -707,6 +772,40 @@
             .best-option {
                 padding: 28px;
             }
+        }
+
+        /* Smooth animations */
+        a > div {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        a > div:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(102, 126, 234, 0.15);
+            border-color: rgba(102, 126, 234, 0.4) !important;
+        }
+
+        .calculate-btn, .cta-button {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .calculate-btn::before, .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .calculate-btn:hover::before, .cta-button:hover::before {
+            width: 300px;
+            height: 300px;
         }
     </style>
 </head>
@@ -767,7 +866,7 @@
 
                 <button class="calculate-btn" onclick="calculateAndScroll()" id="calculateBtn">Compare Now →</button>
 
-                <div class="trust-signals" id="trustSignals">
+                <div class="trust-signals" id="trustSignals" style="margin-top: 24px;">
                     🔒 Your data is not stored | Rates based on April 2026 estimates
                 </div>
             </div>
@@ -862,7 +961,7 @@
                     <div id="otherOptionsContainer"></div>
                 </div>
 
-                <div class="trust-signals" id="dataPrivacy">
+                <div class="trust-signals" id="dataPrivacy" style="margin-top: 24px;">
                     🔒 This calculator doesn't store any personal information
                 </div>
                 
