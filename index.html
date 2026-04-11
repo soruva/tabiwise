@@ -73,6 +73,10 @@
             box-sizing: border-box;
         }
 
+        a {
+            color: inherit;
+        }
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: linear-gradient(180deg, var(--bg-gradient-start) 0%, var(--bg-gradient-mid) 50%, var(--bg-gradient-end) 100%);
@@ -103,12 +107,12 @@
         }
 
         header {
-            background: white;
+            background: var(--card-bg);
             padding: 20px 24px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.06);
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 100;
         }
 
         .header-content {
@@ -124,7 +128,7 @@
         .logo {
             font-size: 20px;
             font-weight: 700;
-            color: #1a1a1a;
+            color: var(--text-primary) !important;
         }
 
         .lang-selector {
@@ -135,13 +139,13 @@
 
         .lang-btn {
             padding: 8px 16px;
-            border: 1.5px solid #e5e7eb;
-            background: white;
+            border: 1.5px solid var(--border-color);
+            background: var(--card-bg);
             border-radius: 24px;
             cursor: pointer;
             font-weight: 500;
             font-size: 14px;
-            color: #6b7280;
+            color: var(--text-secondary);
             transition: all 0.2s;
         }
 
@@ -184,6 +188,146 @@
             transform: scale(0.95);
         }
 
+        .chatbot-toggle {
+            position: fixed;
+            bottom: 24px;
+            right: 96px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(16, 185, 129, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000;
+        }
+
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 32px rgba(16, 185, 129, 0.5);
+        }
+
+        .chatbot-window {
+            position: fixed;
+            bottom: 96px;
+            right: 24px;
+            width: 380px;
+            max-height: calc(100vh - 120px);
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            display: none;
+            flex-direction: column;
+            z-index: 1001;
+            border: 1px solid var(--border-color);
+        }
+
+        .chatbot-window.active {
+            display: flex;
+        }
+
+        .chatbot-header {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 16px 16px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            max-height: 400px;
+        }
+
+        .chatbot-message {
+            margin-bottom: 16px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .bot-message {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            margin-right: auto;
+            margin-left: 0;
+            border: 1px solid var(--border-color);
+            max-width: 85%;
+            width: fit-content;
+        }
+
+        .user-message {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            margin-left: auto;
+            margin-right: 0;
+            text-align: left;
+            max-width: 80%;
+            width: fit-content;
+        }
+
+        .chatbot-input-container {
+            display: flex;
+            gap: 8px;
+            padding: 16px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .chatbot-input-container input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 14px;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+
+        .chatbot-input-container button {
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .chatbot-input-container button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        .chatbot-quick-btn {
+            padding: 12px 16px;
+            background: var(--card-bg);
+            border: 2px solid rgba(16, 185, 129, 0.3);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            color: #059669;
+            text-align: left;
+            transition: all 0.3s;
+        }
+
+        .chatbot-quick-btn:hover {
+            background: rgba(16, 185, 129, 0.1);
+            border-color: #059669;
+            transform: translateX(4px);
+        }
+
         .hero {
             max-width: 1100px;
             margin: 80px auto 60px;
@@ -197,7 +341,7 @@
             line-height: 1.1;
             margin-bottom: 24px;
             letter-spacing: -0.02em;
-            color: #1a1a1a;
+            color: var(--text-primary);
         }
 
         .hero .highlight {
@@ -209,7 +353,7 @@
 
         .hero p {
             font-size: 20px;
-            color: #6b7280;
+            color: var(--text-secondary);
             margin-bottom: 40px;
             font-weight: 400;
             max-width: 800px;
@@ -286,28 +430,33 @@
             display: block;
             font-weight: 600;
             font-size: 15px;
-            color: #374151;
+            color: var(--text-secondary);
             margin-bottom: 10px;
         }
 
         input, select {
             width: 100%;
             padding: 16px 18px;
-            border: 2px solid #e5e7eb;
+            border: 2px solid var(--border-color);
             border-radius: 12px;
             font-size: 16px;
             font-family: inherit;
             font-weight: 500;
-            color: #1a1a1a;
+            color: var(--text-primary);
             transition: all 0.2s;
-            background: #fafafa;
+            background: var(--bg-secondary);
         }
 
         input:focus, select:focus {
             outline: none;
             border-color: #667eea;
-            background: white;
+            background: var(--card-bg);
             box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        select option {
+            background: var(--card-bg);
+            color: var(--text-primary);
         }
 
         .payment-types {
@@ -318,20 +467,20 @@
 
         .payment-btn {
             padding: 20px 16px;
-            border: 2px solid #e5e7eb;
-            background: #fafafa;
+            border: 2px solid var(--border-color);
+            background: var(--bg-secondary);
             border-radius: 12px;
             cursor: pointer;
             font-weight: 600;
             font-size: 15px;
-            color: #6b7280;
+            color: var(--text-secondary);
             transition: all 0.2s;
             text-align: center;
         }
 
         .payment-btn:hover {
             border-color: #667eea;
-            background: white;
+            background: var(--card-bg);
             transform: translateY(-2px);
         }
 
@@ -384,7 +533,7 @@
         }
 
         .best-option {
-            background: white;
+            background: var(--card-bg);
             padding: 40px;
             border-radius: 20px;
             margin-bottom: 24px;
@@ -414,7 +563,7 @@
         .method-name {
             font-size: 32px;
             font-weight: 800;
-            color: #1a1a1a;
+            color: var(--text-primary);
         }
 
         .amount {
@@ -548,13 +697,13 @@
         }
 
         .detail-item span:first-child {
-            color: #6b7280;
+            color: #9ca3af;
             font-weight: 500;
             font-size: 15px;
         }
 
         .detail-item span:last-child {
-            color: #1a1a1a;
+            color: var(--text-primary);
             font-weight: 700;
             font-size: 17px;
         }
@@ -572,12 +721,12 @@
         }
 
         #detailFeeLabel, #detailRateLabel, #detailAvailLabel {
-            color: #6b7280;
+            color: #9ca3af !important;
             font-weight: 600;
         }
 
         #detailFee, #detailRate, #detailAvail {
-            color: #1a1a1a;
+            color: var(--text-primary) !important;
             font-weight: 700;
         }
 
@@ -652,13 +801,13 @@
         .section-title {
             font-size: 24px;
             font-weight: 800;
-            color: #1a1a1a;
+            color: var(--text-primary);
             margin-bottom: 20px;
         }
 
         .other-option {
-            background: #fafafa;
-            border: 2px solid #e5e7eb;
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
             border-radius: 16px;
             padding: 24px;
             margin-bottom: 16px;
@@ -667,7 +816,7 @@
 
         .other-option:hover {
             border-color: #667eea;
-            background: white;
+            background: var(--card-bg);
             transform: translateY(-2px);
             box-shadow: 0 10px 25px rgba(0,0,0,0.05);
         }
@@ -681,7 +830,7 @@
         .option-name {
             font-size: 18px;
             font-weight: 700;
-            color: #1a1a1a;
+            color: var(--text-primary);
             display: flex;
             align-items: center;
             gap: 12px;
@@ -707,7 +856,7 @@
 
         .option-details {
             font-size: 14px;
-            color: #6b7280;
+            color: var(--text-secondary);
             margin-top: 8px;
             font-weight: 500;
         }
@@ -720,7 +869,7 @@
         }
 
         .affiliate-card {
-            background: white;
+            background: var(--card-bg);
             border: 2px solid #e5e7eb;
             border-radius: 20px;
             padding: 32px;
@@ -734,13 +883,14 @@
         }
 
         .affiliate-card h3 {
+            color: var(--text-primary);
             margin-top: 0;
             font-size: 22px;
             margin-bottom: 12px;
         }
 
         .affiliate-card p {
-            color: #6b7280;
+            color: var(--text-secondary);
             line-height: 1.6;
             margin-bottom: 16px;
         }
@@ -767,22 +917,24 @@
         }
 
         .trust-signals {
-            background: #f3f4f6;
-            border-left: 4px solid #6b7280;
+            background: var(--bg-secondary);
+            border: 1px solid rgba(156, 163, 175, 0.3);
+            border-left: 4px solid #9ca3af;
             padding: 12px 16px;
             border-radius: 8px;
             font-size: 12px;
-            color: #4b5563;
+            color: var(--text-secondary);
             font-weight: 500;
             opacity: 0.9;
         }
 
         footer {
-            background: white;
+            background: var(--card-bg);
             padding: 40px 24px;
             margin-top: 80px;
             text-align: center;
-            border-top: 1px solid #e5e7eb;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
         }
 
         footer a {
@@ -966,7 +1118,7 @@
 
                     <div class="savings" id="savingsBox">
                         <div id="savingsText">You save $0.33</div>
-                        <div style="font-size: 14px; margin-top: 4px; opacity: 0.9;" id="savingsDetail">vs Suica/IC Card</div>
+                        <div style="font-size: 14px; margin-top: 4px; opacity: 0.9; color: #047857;" id="savingsDetail">vs Suica/IC Card</div>
                     </div>
 
                     <div class="detail-item">
@@ -998,34 +1150,34 @@
                         <div style="background: rgba(102, 126, 234, 0.08); padding: 18px; border-radius: 12px; margin-bottom: 12px; border: 1px solid rgba(102, 126, 234, 0.2);">
                             <div style="text-align: center; margin-bottom: 16px;">
                                 <span style="font-size: 24px;">📱</span>
-                                <div style="font-size: 15px; font-weight: 700; color: #1a1a1a; margin-top: 8px;">Use Your Home QR Payment Apps!</div>
-                                <div style="font-size: 12px; color: #6b7280; margin-top: 4px;">Available at PayPay merchants across Japan</div>
+                                <div style="font-size: 15px; font-weight: 700; color: var(--text-primary); margin-top: 8px;">Use Your Home QR Payment Apps!</div>
+                                <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;">Available at PayPay merchants across Japan</div>
                             </div>
                             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px;">
                                 <div>
                                     <div style="font-size: 14px; font-weight: 700; color: #667eea; margin-bottom: 8px;">🇰🇷 Korea</div>
                                     <div style="display: flex; flex-direction: column; gap: 6px;">
-                                        <span style="background: white; padding: 8px 12px; border-radius: 8px; font-size: 13px; color: #1a1a1a; font-weight: 600; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">KakaoPay</span>
-                                        <span style="background: white; padding: 8px 12px; border-radius: 8px; font-size: 13px; color: #1a1a1a; font-weight: 600; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">NaverPay</span>
+                                        <span style="background: var(--card-bg); padding: 8px 12px; border-radius: 8px; font-size: 13px; color: var(--text-primary); font-weight: 600; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">KakaoPay</span>
+                                        <span style="background: var(--card-bg); padding: 8px 12px; border-radius: 8px; font-size: 13px; color: var(--text-primary); font-weight: 600; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">NaverPay</span>
                                     </div>
                                 </div>
                                 <div>
                                     <div style="font-size: 14px; font-weight: 700; color: #667eea; margin-bottom: 8px;">🇹🇭 Thailand</div>
                                     <div style="display: flex; flex-direction: column; gap: 6px;">
-                                        <span style="background: white; padding: 8px 12px; border-radius: 8px; font-size: 13px; color: #1a1a1a; font-weight: 600; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">TrueMoney</span>
+                                        <span style="background: var(--card-bg); padding: 8px 12px; border-radius: 8px; font-size: 13px; color: var(--text-primary); font-weight: 600; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">TrueMoney</span>
                                     </div>
                                 </div>
                                 <div>
                                     <div style="font-size: 14px; font-weight: 700; color: #667eea; margin-bottom: 8px;">🇹🇼 Taiwan</div>
                                     <div style="display: flex; flex-direction: column; gap: 6px;">
-                                        <span style="background: white; padding: 8px 12px; border-radius: 8px; font-size: 13px; color: #1a1a1a; font-weight: 600; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">JKOPAY</span>
-                                        <span style="background: white; padding: 8px 12px; border-radius: 8px; font-size: 13px; color: #1a1a1a; font-weight: 600; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">PXPay+</span>
+                                        <span style="background: var(--card-bg); padding: 8px 12px; border-radius: 8px; font-size: 13px; color: var(--text-primary); font-weight: 600; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">JKOPAY</span>
+                                        <span style="background: var(--card-bg); padding: 8px 12px; border-radius: 8px; font-size: 13px; color: var(--text-primary); font-weight: 600; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">PXPay+</span>
                                     </div>
                                 </div>
                                 <div>
                                     <div style="font-size: 14px; font-weight: 700; color: #667eea; margin-bottom: 8px;">🇭🇰 Hong Kong</div>
                                     <div style="display: flex; flex-direction: column; gap: 6px;">
-                                        <span style="background: white; padding: 8px 12px; border-radius: 8px; font-size: 13px; color: #1a1a1a; font-weight: 600; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">AlipayHK</span>
+                                        <span style="background: var(--card-bg); padding: 8px 12px; border-radius: 8px; font-size: 13px; color: var(--text-primary); font-weight: 600; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">AlipayHK</span>
                                     </div>
                                 </div>
                             </div>
@@ -1053,17 +1205,17 @@
 
             <!-- Essential Info Section -->
             <div class="card">
-                <h2 style="font-size: 28px; font-weight: 900; color: #333; text-align: center; margin-bottom: 30px;" id="essentialInfoTitle">
+                <h2 style="font-size: 28px; font-weight: 900; color: var(--text-primary); text-align: center; margin-bottom: 30px;" id="essentialInfoTitle">
                     💡 Essential Info for Travelers
                 </h2>
                 
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
                     <!-- ATM Finder -->
                     <a href="https://www.sevenbank.co.jp/intlcard/index2.html" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
-                        <div style="background: white; border: 2px solid var(--border); border-radius: 12px; padding: 20px; transition: all 0.3s; cursor: pointer; height: 100%;">
+                        <div style="background: var(--card-bg); border: 2px solid var(--border-color); border-radius: 12px; padding: 20px; transition: all 0.3s; cursor: pointer; height: 100%;">
                             <div style="font-size: 32px; margin-bottom: 12px;">🏧</div>
-                            <h3 style="font-size: 18px; font-weight: 800; color: #333; margin-bottom: 8px;" id="atmFinderTitle">ATM Finder</h3>
-                            <p style="font-size: 14px; color: #666; line-height: 1.6;" id="atmFinderDesc">
+                            <h3 style="font-size: 18px; font-weight: 800; color: var(--text-primary); margin-bottom: 8px;" id="atmFinderTitle">ATM Finder</h3>
+                            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;" id="atmFinderDesc">
                                 24/7 ATMs accepting foreign cards at 7-Eleven stores nationwide
                             </p>
                         </div>
@@ -1071,10 +1223,10 @@
 
                     <!-- Tax Refund -->
                     <a href="https://tax-freeshop.jnto.go.jp/eng/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
-                        <div style="background: white; border: 2px solid var(--border); border-radius: 12px; padding: 20px; transition: all 0.3s; cursor: pointer; height: 100%;">
+                        <div style="background: var(--card-bg); border: 2px solid var(--border-color); border-radius: 12px; padding: 20px; transition: all 0.3s; cursor: pointer; height: 100%;">
                             <div style="font-size: 32px; margin-bottom: 12px;">💰</div>
-                            <h3 style="font-size: 18px; font-weight: 800; color: #333; margin-bottom: 8px;" id="taxRefundTitle">Tax Refund</h3>
-                            <p style="font-size: 14px; color: #666; line-height: 1.6;" id="taxRefundDesc">
+                            <h3 style="font-size: 18px; font-weight: 800; color: var(--text-primary); margin-bottom: 8px;" id="taxRefundTitle">Tax Refund</h3>
+                            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;" id="taxRefundDesc">
                                 Get 10% consumption tax back on purchases over ¥5,000
                             </p>
                         </div>
@@ -1082,10 +1234,10 @@
 
                     <!-- Wi-Fi Spots -->
                     <a href="https://www.ntt-bp.net/jcfw/en.html" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
-                        <div style="background: white; border: 2px solid var(--border); border-radius: 12px; padding: 20px; transition: all 0.3s; cursor: pointer; height: 100%;">
+                        <div style="background: var(--card-bg); border: 2px solid var(--border-color); border-radius: 12px; padding: 20px; transition: all 0.3s; cursor: pointer; height: 100%;">
                             <div style="font-size: 32px; margin-bottom: 12px;">📶</div>
-                            <h3 style="font-size: 18px; font-weight: 800; color: #333; margin-bottom: 8px;" id="wifiTitle">Free Wi-Fi</h3>
-                            <p style="font-size: 14px; color: #666; line-height: 1.6;" id="wifiDesc">
+                            <h3 style="font-size: 18px; font-weight: 800; color: var(--text-primary); margin-bottom: 8px;" id="wifiTitle">Free Wi-Fi</h3>
+                            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;" id="wifiDesc">
                                 Japan Connected-free Wi-Fi app - Free internet at major spots
                             </p>
                         </div>
@@ -1093,10 +1245,10 @@
 
                     <!-- Airalo eSIM -->
                     <a href="https://www.airalo.com/japan-esim" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
-                        <div style="background: white; border: 2px solid var(--border); border-radius: 12px; padding: 20px; transition: all 0.3s; cursor: pointer; height: 100%;">
+                        <div style="background: var(--card-bg); border: 2px solid var(--border-color); border-radius: 12px; padding: 20px; transition: all 0.3s; cursor: pointer; height: 100%;">
                             <div style="font-size: 32px; margin-bottom: 12px;">📲</div>
-                            <h3 style="font-size: 18px; font-weight: 800; color: #333; margin-bottom: 8px;" id="airaloTitle">eSIM Data Plans</h3>
-                            <p style="font-size: 14px; color: #666; line-height: 1.6;" id="airaloDesc">
+                            <h3 style="font-size: 18px; font-weight: 800; color: var(--text-primary); margin-bottom: 8px;" id="airaloTitle">eSIM Data Plans</h3>
+                            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;" id="airaloDesc">
                                 Instant activation - No physical SIM card needed
                             </p>
                         </div>
@@ -1104,10 +1256,10 @@
 
                     <!-- ExpressVPN -->
                     <a href="https://www.expressvpn.com" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
-                        <div style="background: white; border: 2px solid var(--border); border-radius: 12px; padding: 20px; transition: all 0.3s; cursor: pointer; height: 100%;">
+                        <div style="background: var(--card-bg); border: 2px solid var(--border-color); border-radius: 12px; padding: 20px; transition: all 0.3s; cursor: pointer; height: 100%;">
                             <div style="font-size: 32px; margin-bottom: 12px;">🔒</div>
-                            <h3 style="font-size: 18px; font-weight: 800; color: #333; margin-bottom: 8px;" id="vpnTitle">Secure VPN</h3>
-                            <p style="font-size: 14px; color: #666; line-height: 1.6;" id="vpnDesc">
+                            <h3 style="font-size: 18px; font-weight: 800; color: var(--text-primary); margin-bottom: 8px;" id="vpnTitle">Secure VPN</h3>
+                            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;" id="vpnDesc">
                                 Access your home banking & streaming services securely
                             </p>
                         </div>
@@ -1127,17 +1279,17 @@
 
             <!-- Essential Tools Section -->
             <div class="card">
-                <h2 style="font-size: 28px; font-weight: 900; color: #333; text-align: center; margin-bottom: 30px;" id="usefulLinksTitle">
+                <h2 style="font-size: 28px; font-weight: 900; color: var(--text-primary); text-align: center; margin-bottom: 30px;" id="usefulLinksTitle">
                     🧭 Essential Tools for Travelers
                 </h2>
                 
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
                     <!-- Google Maps -->
                     <a href="https://www.google.com/maps?hl=en" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
-                        <div style="background: white; border: 2px solid #e5e7eb; border-radius: 12px; padding: 20px; transition: all 0.3s; cursor: pointer; height: 100%;">
+                        <div style="background: var(--card-bg); border: 2px solid #e5e7eb; border-radius: 12px; padding: 20px; transition: all 0.3s; cursor: pointer; height: 100%;">
                             <div style="font-size: 32px; margin-bottom: 12px;">🗺️</div>
-                            <h3 style="font-size: 18px; font-weight: 800; color: #333; margin-bottom: 8px;" id="googleMapsTitle">Google Maps</h3>
-                            <p style="font-size: 14px; color: #666; line-height: 1.6;" id="googleMapsDesc">
+                            <h3 style="font-size: 18px; font-weight: 800; color: var(--text-primary); margin-bottom: 8px;" id="googleMapsTitle">Google Maps</h3>
+                            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;" id="googleMapsDesc">
                                 Search with filters: "accepts credit cards" or "English menu"
                             </p>
                         </div>
@@ -1145,10 +1297,10 @@
 
                     <!-- Hyperdia -->
                     <a href="https://www.hyperdia.com/en/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
-                        <div style="background: white; border: 2px solid #e5e7eb; border-radius: 12px; padding: 20px; transition: all 0.3s; cursor: pointer; height: 100%;">
+                        <div style="background: var(--card-bg); border: 2px solid #e5e7eb; border-radius: 12px; padding: 20px; transition: all 0.3s; cursor: pointer; height: 100%;">
                             <div style="font-size: 32px; margin-bottom: 12px;">🚇</div>
-                            <h3 style="font-size: 18px; font-weight: 800; color: #333; margin-bottom: 8px;" id="hyperdiaTitle">Train Route Planner</h3>
-                            <p style="font-size: 14px; color: #666; line-height: 1.6;" id="hyperdiaDesc">
+                            <h3 style="font-size: 18px; font-weight: 800; color: var(--text-primary); margin-bottom: 8px;" id="hyperdiaTitle">Train Route Planner</h3>
+                            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;" id="hyperdiaDesc">
                                 Hyperdia - English route search for all trains in Japan
                             </p>
                         </div>
@@ -1156,10 +1308,10 @@
 
                     <!-- Japan Tourism -->
                     <a href="https://www.japan.travel/en/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
-                        <div style="background: white; border: 2px solid #e5e7eb; border-radius: 12px; padding: 20px; transition: all 0.3s; cursor: pointer; height: 100%;">
+                        <div style="background: var(--card-bg); border: 2px solid #e5e7eb; border-radius: 12px; padding: 20px; transition: all 0.3s; cursor: pointer; height: 100%;">
                             <div style="font-size: 32px; margin-bottom: 12px;">🏛️</div>
-                            <h3 style="font-size: 18px; font-weight: 800; color: #333; margin-bottom: 8px;" id="jntoTitle">Official Travel Guide</h3>
-                            <p style="font-size: 14px; color: #666; line-height: 1.6;" id="jntoDesc">
+                            <h3 style="font-size: 18px; font-weight: 800; color: var(--text-primary); margin-bottom: 8px;" id="jntoTitle">Official Travel Guide</h3>
+                            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;" id="jntoDesc">
                                 Japan National Tourism - Destinations, events & tips
                             </p>
                         </div>
@@ -1167,10 +1319,10 @@
 
                     <!-- Welcome Suica -->
                     <a href="https://www.jreast.co.jp/multi/pass/welcomesuica.html" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
-                        <div style="background: white; border: 2px solid #e5e7eb; border-radius: 12px; padding: 20px; transition: all 0.3s; cursor: pointer; height: 100%;">
+                        <div style="background: var(--card-bg); border: 2px solid #e5e7eb; border-radius: 12px; padding: 20px; transition: all 0.3s; cursor: pointer; height: 100%;">
                             <div style="font-size: 32px; margin-bottom: 12px;">🎫</div>
-                            <h3 style="font-size: 18px; font-weight: 800; color: #333; margin-bottom: 8px;" id="suicaGuideTitle">Welcome Suica Guide</h3>
-                            <p style="font-size: 14px; color: #666; line-height: 1.6;" id="suicaGuideDesc">
+                            <h3 style="font-size: 18px; font-weight: 800; color: var(--text-primary); margin-bottom: 8px;" id="suicaGuideTitle">Welcome Suica Guide</h3>
+                            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;" id="suicaGuideDesc">
                                 How to buy and use Suica IC card for trains & stores
                             </p>
                         </div>
@@ -1180,26 +1332,26 @@
 
             <!-- Travel Insurance Section -->
             <div class="card">
-                <h2 style="font-size: 28px; font-weight: 900; color: #333; text-align: center; margin-bottom: 15px;" id="insuranceTitle">
+                <h2 style="font-size: 28px; font-weight: 900; color: var(--text-primary); text-align: center; margin-bottom: 15px;" id="insuranceTitle">
                     🛡️ Travel Insurance
                 </h2>
-                <p style="text-align: center; color: #666; margin-bottom: 30px; font-size: 14px;" id="insuranceSubtitle">
+                <p style="text-align: center; color: var(--text-secondary); margin-bottom: 30px; font-size: 14px;" id="insuranceSubtitle">
                     Protect your trip with comprehensive coverage
                 </p>
 
                 <div style="display: grid; gap: 16px;">
                     <!-- World Nomads -->
                     <a href="https://www.worldnomads.com" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
-                        <div style="background: white; border: 2px solid var(--border); border-radius: 12px; padding: 20px; transition: all 0.3s; cursor: pointer;">
+                        <div style="background: var(--card-bg); border: 2px solid var(--border-color); border-radius: 12px; padding: 20px; transition: all 0.3s; cursor: pointer;">
                             <div style="display: flex; justify-content: space-between; align-items: center; gap: 20px;">
                                 <div style="display: flex; align-items: center; gap: 16px; flex: 1;">
                                     <div style="font-size: 36px; flex-shrink: 0; width: 48px; text-align: center;">🌍</div>
                                     <div style="flex: 1;">
-                                        <h3 style="font-size: 18px; font-weight: 800; color: #333; margin: 0 0 4px 0;" id="worldNomadsTitle">World Nomads Travel Insurance</h3>
-                                        <p style="font-size: 13px; color: #666; margin: 0;" id="worldNomadsDesc">Medical emergencies, trip cancellation & lost luggage coverage</p>
+                                        <h3 style="font-size: 18px; font-weight: 800; color: var(--text-primary); margin: 0 0 4px 0;" id="worldNomadsTitle">World Nomads Travel Insurance</h3>
+                                        <p style="font-size: 13px; color: var(--text-secondary); margin: 0;" id="worldNomadsDesc">Medical emergencies, trip cancellation & lost luggage coverage</p>
                                     </div>
                                 </div>
-                                <div style="background: var(--primary); color: white; padding: 10px 20px; border-radius: 8px; font-weight: 700; font-size: 14px; white-space: nowrap; flex-shrink: 0; width: 150px; text-align: center;" id="worldNomadsCTA">
+                                <div style="background: #667eea; color: white; padding: 10px 20px; border-radius: 8px; font-weight: 700; font-size: 14px; white-space: nowrap; flex-shrink: 0; width: 150px; text-align: center;" id="worldNomadsCTA">
                                     Get Quote →
                                 </div>
                             </div>
@@ -1207,30 +1359,30 @@
                     </a>
                 </div>
 
-                <div style="margin-top: 20px; padding: 16px; background: #e8f4f8; border-left: 4px solid var(--primary); border-radius: 8px; font-size: 12px; color: #0066cc;">
+                <div style="margin-top: 20px; padding: 16px; background: #e8f4f8; border-left: 4px solid #667eea; border-radius: 8px; font-size: 12px; color: #0066cc;">
                     <strong id="insuranceDisclaimer">Important:</strong> <span id="insuranceDisclaimerText">Travel insurance is strongly recommended for international trips. Coverage varies by plan.</span>
                 </div>
             </div>
 
             <!-- Travel Services Section -->
             <div class="card">
-                <h2 style="font-size: 28px; font-weight: 900; color: #333; text-align: center; margin-bottom: 15px;" id="travelServicesTitle">
+                <h2 style="font-size: 28px; font-weight: 900; color: var(--text-primary); text-align: center; margin-bottom: 15px;" id="travelServicesTitle">
                     🎫 Complete Your Japan Trip
                 </h2>
-                <p style="text-align: center; color: #666; margin-bottom: 30px; font-size: 14px;" id="travelServicesSubtitle">
+                <p style="text-align: center; color: var(--text-secondary); margin-bottom: 30px; font-size: 14px;" id="travelServicesSubtitle">
                     Recommended services to make your trip easier
                 </p>
 
                 <div style="display: grid; gap: 16px;">
                     <!-- JR Pass -->
                     <a href="https://www.klook.com/activity/jr-pass-japan/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
-                        <div style="background: white; border: 2px solid var(--border); border-radius: 12px; padding: 20px; transition: all 0.3s; cursor: pointer;">
+                        <div style="background: var(--card-bg); border: 2px solid var(--border-color); border-radius: 12px; padding: 20px; transition: all 0.3s; cursor: pointer;">
                             <div style="display: flex; justify-content: space-between; align-items: center; gap: 20px;">
                                 <div style="display: flex; align-items: center; gap: 16px; flex: 1;">
                                     <div style="font-size: 36px; flex-shrink: 0; width: 48px; text-align: center;">🚄</div>
                                     <div style="flex: 1;">
-                                        <h3 style="font-size: 18px; font-weight: 800; color: #333; margin: 0 0 4px 0;" id="jrPassTitle">JR Pass - Unlimited Train Travel</h3>
-                                        <p style="font-size: 13px; color: #666; margin: 0;" id="jrPassDesc">Save up to 50% on Shinkansen & JR trains nationwide</p>
+                                        <h3 style="font-size: 18px; font-weight: 800; color: var(--text-primary); margin: 0 0 4px 0;" id="jrPassTitle">JR Pass - Unlimited Train Travel</h3>
+                                        <p style="font-size: 13px; color: var(--text-secondary); margin: 0;" id="jrPassDesc">Save up to 50% on Shinkansen & JR trains nationwide</p>
                                     </div>
                                 </div>
                                 <div style="background: var(--accent); color: white; padding: 10px 20px; border-radius: 8px; font-weight: 700; font-size: 14px; white-space: nowrap; flex-shrink: 0; width: 150px; text-align: center;" id="jrPassCTA">
@@ -1242,13 +1394,13 @@
 
                     <!-- Pocket Wi-Fi -->
                     <a href="https://www.klook.com/activity/wifi-router-japan/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
-                        <div style="background: white; border: 2px solid var(--border); border-radius: 12px; padding: 20px; transition: all 0.3s; cursor: pointer;">
+                        <div style="background: var(--card-bg); border: 2px solid var(--border-color); border-radius: 12px; padding: 20px; transition: all 0.3s; cursor: pointer;">
                             <div style="display: flex; justify-content: space-between; align-items: center; gap: 20px;">
                                 <div style="display: flex; align-items: center; gap: 16px; flex: 1;">
                                     <div style="font-size: 36px; flex-shrink: 0; width: 48px; text-align: center;">📱</div>
                                     <div style="flex: 1;">
-                                        <h3 style="font-size: 18px; font-weight: 800; color: #333; margin: 0 0 4px 0;" id="wifiRentalTitle">Pocket Wi-Fi Rental</h3>
-                                        <p style="font-size: 13px; color: #666; margin: 0;" id="wifiRentalDesc">Unlimited 4G data - Pick up at airport or hotel</p>
+                                        <h3 style="font-size: 18px; font-weight: 800; color: var(--text-primary); margin: 0 0 4px 0;" id="wifiRentalTitle">Pocket Wi-Fi Rental</h3>
+                                        <p style="font-size: 13px; color: var(--text-secondary); margin: 0;" id="wifiRentalDesc">Unlimited 4G data - Pick up at airport or hotel</p>
                                     </div>
                                 </div>
                                 <div style="background: var(--accent); color: white; padding: 10px 20px; border-radius: 8px; font-weight: 700; font-size: 14px; white-space: nowrap; flex-shrink: 0; width: 150px; text-align: center;" id="wifiRentalCTA">
@@ -1260,13 +1412,13 @@
 
                     <!-- Hotels -->
                     <a href="https://www.booking.com/country/jp.html?aid=YOUR_AID" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
-                        <div style="background: white; border: 2px solid var(--border); border-radius: 12px; padding: 20px; transition: all 0.3s; cursor: pointer;">
+                        <div style="background: var(--card-bg); border: 2px solid var(--border-color); border-radius: 12px; padding: 20px; transition: all 0.3s; cursor: pointer;">
                             <div style="display: flex; justify-content: space-between; align-items: center; gap: 20px;">
                                 <div style="display: flex; align-items: center; gap: 16px; flex: 1;">
                                     <div style="font-size: 36px; flex-shrink: 0; width: 48px; text-align: center;">🏨</div>
                                     <div style="flex: 1;">
-                                        <h3 style="font-size: 18px; font-weight: 800; color: #333; margin: 0 0 4px 0;" id="hotelsTitle">Hotels & Accommodations</h3>
-                                        <p style="font-size: 13px; color: #666; margin: 0;" id="hotelsDesc">Best prices on hotels, ryokans & apartments</p>
+                                        <h3 style="font-size: 18px; font-weight: 800; color: var(--text-primary); margin: 0 0 4px 0;" id="hotelsTitle">Hotels & Accommodations</h3>
+                                        <p style="font-size: 13px; color: var(--text-secondary); margin: 0;" id="hotelsDesc">Best prices on hotels, ryokans & apartments</p>
                                     </div>
                                 </div>
                                 <div style="background: var(--accent); color: white; padding: 10px 20px; border-radius: 8px; font-weight: 700; font-size: 14px; white-space: nowrap; flex-shrink: 0; width: 150px; text-align: center;" id="hotelsCTA">
@@ -1278,13 +1430,13 @@
 
                     <!-- Airport Transfer -->
                     <a href="https://www.klook.com/activity/airport-transfer-japan/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
-                        <div style="background: white; border: 2px solid var(--border); border-radius: 12px; padding: 20px; transition: all 0.3s; cursor: pointer;">
+                        <div style="background: var(--card-bg); border: 2px solid var(--border-color); border-radius: 12px; padding: 20px; transition: all 0.3s; cursor: pointer;">
                             <div style="display: flex; justify-content: space-between; align-items: center; gap: 20px;">
                                 <div style="display: flex; align-items: center; gap: 16px; flex: 1;">
                                     <div style="font-size: 36px; flex-shrink: 0; width: 48px; text-align: center;">🚖</div>
                                     <div style="flex: 1;">
-                                        <h3 style="font-size: 18px; font-weight: 800; color: #333; margin: 0 0 4px 0;" id="transferTitle">Airport Transfer</h3>
-                                        <p style="font-size: 13px; color: #666; margin: 0;" id="transferDesc">Private car or shared shuttle - Door to door service</p>
+                                        <h3 style="font-size: 18px; font-weight: 800; color: var(--text-primary); margin: 0 0 4px 0;" id="transferTitle">Airport Transfer</h3>
+                                        <p style="font-size: 13px; color: var(--text-secondary); margin: 0;" id="transferDesc">Private car or shared shuttle - Door to door service</p>
                                     </div>
                                 </div>
                                 <div style="background: var(--accent); color: white; padding: 10px 20px; border-radius: 8px; font-weight: 700; font-size: 14px; white-space: nowrap; flex-shrink: 0; width: 150px; text-align: center;" id="transferCTA">
@@ -1296,13 +1448,13 @@
 
                     <!-- GetYourGuide -->
                     <a href="https://www.getyourguide.com/tokyo-l193/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
-                        <div style="background: white; border: 2px solid var(--border); border-radius: 12px; padding: 20px; transition: all 0.3s; cursor: pointer;">
+                        <div style="background: var(--card-bg); border: 2px solid var(--border-color); border-radius: 12px; padding: 20px; transition: all 0.3s; cursor: pointer;">
                             <div style="display: flex; justify-content: space-between; align-items: center; gap: 20px;">
                                 <div style="display: flex; align-items: center; gap: 16px; flex: 1;">
                                     <div style="font-size: 36px; flex-shrink: 0; width: 48px; text-align: center;">🎭</div>
                                     <div style="flex: 1;">
-                                        <h3 style="font-size: 18px; font-weight: 800; color: #333; margin: 0 0 4px 0;" id="toursTitle">Tours & Activities</h3>
-                                        <p style="font-size: 13px; color: #666; margin: 0;" id="toursDesc">Skip-the-line tickets, guided tours & unique experiences</p>
+                                        <h3 style="font-size: 18px; font-weight: 800; color: var(--text-primary); margin: 0 0 4px 0;" id="toursTitle">Tours & Activities</h3>
+                                        <p style="font-size: 13px; color: var(--text-secondary); margin: 0;" id="toursDesc">Skip-the-line tickets, guided tours & unique experiences</p>
                                     </div>
                                 </div>
                                 <div style="background: var(--accent); color: white; padding: 10px 20px; border-radius: 8px; font-weight: 700; font-size: 14px; white-space: nowrap; flex-shrink: 0; width: 150px; text-align: center;" id="toursCTA">
@@ -1313,7 +1465,7 @@
                     </a>
                 </div>
 
-                <div style="margin-top: 20px; padding: 16px; background: #e8f4f8; border-left: 4px solid var(--primary); border-radius: 8px; font-size: 12px; color: #0066cc;">
+                <div style="margin-top: 20px; padding: 16px; background: #e8f4f8; border-left: 4px solid #667eea; border-radius: 8px; font-size: 12px; color: #0066cc;">
                     <strong id="affiliateDisclaimer">Affiliate Disclosure:</strong> <span id="affiliateDisclaimerText">We may earn commission from bookings through these links at no extra cost to you. These services are recommended based on quality and traveler reviews.</span>
                 </div>
             </div>
@@ -1323,6 +1475,38 @@
         <button class="dark-mode-toggle" onclick="toggleDarkMode()" id="darkModeToggle" aria-label="Toggle dark mode">
             <span id="darkModeIcon">🌙</span>
         </button>
+
+        <!-- Chatbot Toggle -->
+        <button class="chatbot-toggle" onclick="toggleChatbot()" id="chatbotToggle" aria-label="Open travel assistant">
+            💬
+        </button>
+
+        <!-- Chatbot Window -->
+        <div class="chatbot-window" id="chatbotWindow">
+            <div class="chatbot-header">
+                <div>
+                    <h3 style="margin: 0; font-size: 16px;">Japan Travel Assistant</h3>
+                    <p style="margin: 4px 0 0; font-size: 12px; opacity: 0.8;">Ask me anything about traveling in Japan</p>
+                </div>
+                <button onclick="toggleChatbot()" style="background: none; border: none; font-size: 24px; cursor: pointer; color: white;">×</button>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages">
+                <div class="chatbot-message bot-message" style="background: rgba(16, 185, 129, 0.1); border: 2px solid rgba(16, 185, 129, 0.3);">
+                    <strong>👋 Hello!</strong><br>
+                    I'm your Japan travel assistant. Choose a topic or ask me anything:
+                    <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 12px;">
+                        <button onclick="askQuestion('What payment methods work best in Japan?')" class="chatbot-quick-btn">💳 Payment methods in Japan</button>
+                        <button onclick="askQuestion('Give me travel tips for visiting Japan')" class="chatbot-quick-btn">✈️ Travel tips and advice</button>
+                        <button onclick="askQuestion('How do I get around in Japan?')" class="chatbot-quick-btn">🚇 Transportation guidance</button>
+                        <button onclick="askQuestion('Tell me about Japanese culture and etiquette')" class="chatbot-quick-btn">🎎 Cultural information</button>
+                    </div>
+                </div>
+            </div>
+            <div class="chatbot-input-container">
+                <input type="text" id="chatbotInput" placeholder="Ask me anything..." onkeypress="if(event.key==='Enter') sendMessage()">
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </div>
 
         <!-- Structured Data (Schema.org) -->
         <script type="application/ld+json">
@@ -2019,6 +2203,116 @@
 
         // Smooth icon transition
         document.getElementById('darkModeIcon').style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+    </script>
+
+    <script>
+        // Chatbot functionality
+        function toggleChatbot() {
+            const chatbot = document.getElementById('chatbotWindow');
+            chatbot.classList.toggle('active');
+        }
+
+        function askQuestion(question) {
+            const input = document.getElementById('chatbotInput');
+            input.value = question;
+            sendMessage();
+        }
+
+        function formatMarkdown(text) {
+            // Remove ### markdown headers
+            text = text.replace(/^###\s+/gm, '');
+            text = text.replace(/^##\s+/gm, '');
+            text = text.replace(/^#\s+/gm, '');
+            
+            // Remove ** markdown (bold)
+            text = text.replace(/\*\*/g, '');
+            
+            // Remove * markdown (italic and bullet points at start of line)
+            text = text.replace(/^\*\s+/gm, '• ');
+            text = text.replace(/\*/g, '');
+            
+            // Format bullet points
+            text = text.replace(/^- /gm, '• ');
+            
+            // Add line breaks for better readability
+            text = text.replace(/\n\n/g, '<br><br>');
+            text = text.replace(/\n/g, '<br>');
+            
+            return text;
+        }
+
+        async function sendMessage() {
+            const input = document.getElementById('chatbotInput');
+            const messagesContainer = document.getElementById('chatbotMessages');
+            const userMessage = input.value.trim();
+            
+            if (!userMessage) return;
+            
+            // Add user message
+            const userDiv = document.createElement('div');
+            userDiv.className = 'chatbot-message user-message';
+            userDiv.textContent = userMessage;
+            messagesContainer.appendChild(userDiv);
+            
+            input.value = '';
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            
+            // Add loading message
+            const loadingDiv = document.createElement('div');
+            loadingDiv.className = 'chatbot-message bot-message';
+            loadingDiv.innerHTML = '<em>Thinking...</em>';
+            messagesContainer.appendChild(loadingDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            
+            try {
+                // Call Claude API
+                const response = await fetch('https://api.anthropic.com/v1/messages', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        model: 'claude-sonnet-4-20250514',
+                        max_tokens: 1000,
+                        messages: [
+                            {
+                                role: 'user',
+                                content: `You are a helpful Japan travel assistant. Answer this question concisely and helpfully. Do not use any emojis in your response: ${userMessage}`
+                            }
+                        ]
+                    })
+                });
+                
+                const data = await response.json();
+                
+                // Remove loading message
+                messagesContainer.removeChild(loadingDiv);
+                
+                // Add bot response
+                const botDiv = document.createElement('div');
+                botDiv.className = 'chatbot-message bot-message';
+                
+                if (data.content && data.content[0]) {
+                    botDiv.innerHTML = formatMarkdown(data.content[0].text);
+                } else {
+                    botDiv.textContent = 'Sorry, I encountered an error. Please try again.';
+                }
+                
+                messagesContainer.appendChild(botDiv);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                
+            } catch (error) {
+                // Remove loading message
+                messagesContainer.removeChild(loadingDiv);
+                
+                // Add error message
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'chatbot-message bot-message';
+                errorDiv.textContent = 'Sorry, I encountered an error. Please try again.';
+                messagesContainer.appendChild(errorDiv);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+        }
     </script>
 
     <script>
