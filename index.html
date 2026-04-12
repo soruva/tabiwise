@@ -2365,14 +2365,14 @@
                 }, 100);
             });
         });
-        // FAQ - Close others when one opens
+        // FAQ - Close others when one opens & Close on outside click
         document.addEventListener('DOMContentLoaded', () => {
             const faqItems = document.querySelectorAll('.faq-item');
             
+            // Close others when one opens
             faqItems.forEach(item => {
                 item.addEventListener('toggle', (e) => {
                     if (item.open) {
-                        // Close all other FAQ items
                         faqItems.forEach(otherItem => {
                             if (otherItem !== item && otherItem.open) {
                                 otherItem.open = false;
@@ -2380,6 +2380,19 @@
                         });
                     }
                 });
+            });
+            
+            // Close all FAQs when clicking outside
+            document.addEventListener('click', (e) => {
+                const clickedInsideFaq = Array.from(faqItems).some(item => item.contains(e.target));
+                
+                if (!clickedInsideFaq) {
+                    faqItems.forEach(item => {
+                        if (item.open) {
+                            item.open = false;
+                        }
+                    });
+                }
             });
         });
     </script>
