@@ -2507,6 +2507,23 @@
                 }
             });
         });
+        // Scroll to Top
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Show/hide scroll button
+        window.addEventListener('scroll', () => {
+            const scrollBtn = document.getElementById('scrollTopBtn');
+            if (window.pageYOffset > 300) {
+                scrollBtn.classList.add('show');
+            } else {
+                scrollBtn.classList.remove('show');
+            }
+        });
     </script>
 </body>
 </html>
