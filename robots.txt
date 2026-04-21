@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://travelpaycomparison.vercel.app/sitemap.xml
+Sitemap: https://tabiwise.vercel.app/sitemap.xml
