@@ -2463,6 +2463,18 @@
             document.getElementById('faq9A').innerHTML = t.faq9A;
             document.getElementById('faq10Q').textContent = t.faq10Q;
             document.getElementById('faq10A').innerHTML = t.faq10A;
+
+            // World Nomads - 中国語（簡体字）では非表示
+const insuranceSection = document.querySelector('.card:has(#insuranceTitle)');
+if (insuranceSection) {
+    insuranceSection.style.display = currentLanguage === 'zh-cn' ? 'none' : '';
+}
+
+// FAQ9のWorld Nomadsリンクも非表示
+const faq9 = document.querySelector('details:has(#faq9A)');
+if (faq9) {
+    faq9.style.display = currentLanguage === 'zh-cn' ? 'none' : '';
+}
         }
 
         function setPayment(type, element) {
