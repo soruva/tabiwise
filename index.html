@@ -2475,6 +2475,16 @@ const faq9 = document.querySelector('details:has(#faq9A)');
 if (faq9) {
     faq9.style.display = currentLanguage === 'zh-cn' ? 'none' : '';
 }
+// VPN - 中国語（簡体字）では非表示
+const vpnSection = document.getElementById('vpnSectionCard');
+if (vpnSection) {
+    vpnSection.style.display = currentLanguage === 'zh-cn' ? 'none' : '';
+}
+
+const faq8Card = document.getElementById('faq8Card');
+if (faq8Card) {
+    faq8Card.style.display = currentLanguage === 'zh-cn' ? 'none' : '';
+}            
         }
 
         function setPayment(type, element) {
